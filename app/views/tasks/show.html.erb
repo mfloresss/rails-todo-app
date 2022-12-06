@@ -3,3 +3,10 @@
 
 <%= link_to "Edit", edit_task_path(@task) %>
 <%= link_to "Delete", task_path(@task), method: :delete %>
+
+<h2>Comments</h2>
+<%= render @task.comments %>
+
+
+<h2>Add comment:</h2>
+<%= render "comments/form" %>
