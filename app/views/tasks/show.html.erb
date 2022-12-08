@@ -1,12 +1,71 @@
-<h1> Task: <%= @task.title %> </h1>
-<p><%= @task.body %></p>
+<style>
+  .task-container {
+  position: relative;
+  color: white;
+  margin-bottom: 50px;
+  }
 
-<%= link_to "Edit", edit_task_path(@task) %>
-<%= link_to "Delete", task_path(@task), method: :delete %>
+  .task-card {
+  background-color: rgb(57, 57, 57);
+  padding: 30px;
+  cursor: pointer;
+  line-height: 3rem;
+  border-radius: 20px;
+  }
 
-<h2>Comments</h2>
-<%= render @task.comments %>
+  .delete-task-btn, .edit-task-btn {
+  position: absolute;
+  right: 0;
+  line-height: 0;
+  width: 2rem;
+  height: 2rem;
+  margin: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  cursor: pointer;
+  color: black;
+  }
 
+  .delete-task-btn {
+    top: 0;
+  }
 
-<h2>Add comment:</h2>
-<%= render "comments/form" %>
+  .edit-task-btn {
+    bottom:0;
+  }
+
+  .comments-form {
+      border-radius: 20px 20px 0 0;
+  }
+
+  .comments-form, .comments-container{
+      padding: 30px;
+      color: white;
+      background-color: rgb(57, 57, 57);
+  }
+
+  .comments-container {
+      border-top: 1px solid white;
+      border-radius: 0 0 20px 20px;
+  }
+</style>
+<div class="layout">
+  <div class="task-container">
+    <div class="task-card">
+      <h2><%= @task.title %></h2>
+      <p><%= @task.body %></p>
+      <p><%= @task.completed %></p>
+    </div>
+    <%= link_to "X", task_path(@task), method: :delete, class: "delete-task-btn" %>
+    <%= link_to "Edit", edit_task_path(@task), class: "edit-task-btn" %>
+  </div>
+  <div class="comments-form">
+    <%= render "comments/form", comment: @comment %>
+  </div>
+    <div class="comments-container">
+      <%= render @task.comments %>
+    </div>
+  <div>
