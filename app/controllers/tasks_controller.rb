@@ -1,10 +1,22 @@
 class TasksController < ApplicationController
+    before_action :set_task
+    skip_before_action :set_task, only: [:index, :new, :create, :destroy_all]
+
     def index
         @tasks = Task.all
+        respond_to do |format|
+            format.html
+            format.json { render json: @tasks, status: :ok }
+        end
     end
 
     def show
-        @task = Task.find(params[:id])
+        @comment = @task.comments.build
+        # @task = @task.attributes.merge( { comments: @task.comments } )
+        # respond_to do |format|
+        #     format.html
+        #     format.json { render json: @task, include: [:comments], status: :ok } 
+        # end
     end
 
     def new
@@ -13,47 +25,42 @@ class TasksController < ApplicationController
 
     def create
         @task = Task.new(task_params)
-
         if @task.save
             redirect_to @task
         else
             render :new, status: :unprocessable_entity
         end
     end
-    
-    def edit
-        @task = Task.find(params[:id])
+
+    def edit 
     end
 
     def update
-        @task = Task.find(params[:id])
-    
         if @task.update(task_params)
             redirect_to @task
         else
-            render :edit, status: :unprocessable_entity
+            render :new, status: :unprocessable_entity
         end
     end
 
     def destroy
-        @task = Task.find(params[:id])
-        @task.destroy!
-
+        @task.destroy
         redirect_to root_path, status: :see_other
     end
 
     def destroy_all
-        tasks = Task.all
-        tasks.destroy_all
-
+        @tasks = Task.all
+        @tasks.destroy_all
         redirect_to root_path, status: :see_other
     end
 
     private
-    
 
-    def task_params
-        params.require(:task).permit(:title, :body)
+    def set_task
+        @task = Task.find(params[:id])
     end
 
+    def task_params
+        params.require(:task).permit(:title, :body, :commenter, :comment)
+    end
 end
