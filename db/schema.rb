@@ -12,6 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2022_12_06_000721) do
 
+  create_table "comments", force: :cascade do |t|
+    t.string "commenter", null: false
+    t.text "body", null: false
+    t.integer "task_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_comments_on_task_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
     t.text "body"
