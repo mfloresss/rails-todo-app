@@ -58,3 +58,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "shakapacker", "= 6.5"
 
 gem "react-rails", "= 2.6"
+
+gem 'dotenv-rails'
