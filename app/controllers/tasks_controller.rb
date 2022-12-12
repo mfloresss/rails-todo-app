@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   skip_before_action :set_task, only: %i[index new create destroy_all]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.where status: :ongoing
     respond_to do |format|
       format.html
       format.json { render json: @tasks, status: :ok }
@@ -30,7 +30,10 @@ class TasksController < ApplicationController
   def edit; end
 
   def update
-    if @task.update(task_params)
+    if status.present?
+      @task.status = status
+      @task.save!
+    elsif @task.update(task_params)
       redirect_to @task
     else
       render :new, status: :unprocessable_entity
@@ -55,6 +58,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :body, :commenter, :comment)
+    params.require(:task).permit(:title, :body, :commenter, :comment, :status)
   end
 end

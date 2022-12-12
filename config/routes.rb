@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  root "tasks#index"
+  root 'tasks#index'
 
-  resources :tasks do 
+  resources :tasks do
     resources :comments
   end
 
   resources :comments
 
-  delete "/tasks", to: "tasks#destroy_all"
+  delete '/tasks', to: 'tasks#destroy_all'
 end
