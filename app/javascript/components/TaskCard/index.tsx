@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Task } from "../../interfaces/task";
+import { CloseIcon } from "../Icons";
 import "./styles.css";
 
 interface TaskCardProps {
@@ -19,12 +20,13 @@ const TaskCard = ({ task, navigate, deleteTaskMutation }: TaskCardProps) => {
         className="task-card"
         onClick={() => navigate({ to: `tasks/${task.id}` })}
       >
-        <h2>{task.title}</h2>
+        <div className="header">
+          <h2>{task.title}</h2>
+        </div>
         <p>{task.body}</p>
-        <p>{task.completed ? "Terminada" : "Por hacer"}</p>
       </div>
       <div className="delete-task-btn" onClick={handleOnDeleteTask}>
-        <span>X</span>
+        <CloseIcon />
       </div>
     </div>
   );

@@ -4,28 +4,11 @@
   display: flex;
   justify-content: end;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.471);
 }
 
 .task-dashboard-menu button {
-  background-color: black;
+  background-color: #9eb25d;
   padding: 10px 20px;
   border-radius: 20px;
-  color: white;
-}
-
-.add-task-btn {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  margin: 20px 20px 20px 0;
-  width: 4rem;
-  height: 4rem;
-  background-color: black;
-  color: white;
-  font-size: 2rem;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: #eefcce;
 }

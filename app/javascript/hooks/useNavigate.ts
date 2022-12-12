@@ -11,7 +11,9 @@ const useNavigate = ({ basePath }: UseNavigateProps) => {
     (window as Window).location = `${basePath}/${to}`;
   };
 
-  return { navigate };
+  const currentPath = window.location.pathname;
+
+  return { navigate, currentPath };
 };
 
 export { useNavigate };

@@ -2,4 +2,5 @@
   min-width: 100px;
   min-height: 100vh;
   padding: 50px 10%;
+  margin-bottom: calc(88px + 1rem);
 }

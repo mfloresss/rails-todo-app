@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
     before_action :set_task
 
+    def index
+    end
+
     def create
         @comment = @task.comments.new(comment_params)
         

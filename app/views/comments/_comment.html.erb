@@ -1,16 +1,18 @@
 <style>
-    .comment-card {
-        width: 100%;
-        padding: 20px 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-    }
+  .comment-card {
+      width: 100%;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+  }
 </style>
 
-<div class="comment-card">
-    <p>Commenter: <%= comment.commenter %></p>
-    <p>Body: <%= comment.body %></p>
-    <%= link_to "Destroy", task_comments_url(@task, comment), method: :delete %>
-</div>
+<% if comment.commenter && comment.body %>
+  <div class="comment-card">
+    <h3><%= comment.commenter %></h3>
+    <p><%= comment.body %></p>
+    <p><%= comment.created_at&.strftime("%d/%m %I:%M%p") %></p>
+  </div>
+<% end %>

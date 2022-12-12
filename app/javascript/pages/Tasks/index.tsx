@@ -7,6 +7,7 @@ import { useDeleteAllTasks } from "../../hooks/mutations/tasks";
 import { useDeleteTask } from "../../hooks/mutations/tasks";
 import { useNavigate } from "../../hooks/useNavigate";
 import "./styles.css";
+import { BottomBar } from "../../components/BottomBar";
 
 export interface TasksPageProps {
   backendUrl: string;
@@ -15,7 +16,7 @@ export interface TasksPageProps {
 const Tasks = ({ backendUrl }: TasksPageProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const { navigate } = useNavigate({ basePath: backendUrl });
+  const { navigate, currentPath } = useNavigate({ basePath: backendUrl });
 
   const { fetchTasks, tasks } = useFetchTasks({
     backendUrl,
@@ -44,7 +45,7 @@ const Tasks = ({ backendUrl }: TasksPageProps) => {
 
   return (
     <Layout isLoading={isLoading}>
-      <h1>Tasks</h1>
+      <h1>To-do</h1>
       {tasks.length > 0 && (
         <>
           <div className="task-dashboard-menu">
@@ -57,16 +58,7 @@ const Tasks = ({ backendUrl }: TasksPageProps) => {
           />
         </>
       )}
-      <button
-        className="add-task-btn"
-        onClick={() =>
-          navigate({
-            to: "tasks/new",
-          })
-        }
-      >
-        +
-      </button>
+      <BottomBar backendUrl={backendUrl} />
     </Layout>
   );
 };
