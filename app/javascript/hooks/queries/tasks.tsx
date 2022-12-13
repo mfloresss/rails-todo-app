@@ -3,23 +3,30 @@ import { Task } from "../../interfaces/task";
 
 interface useFetchTasks {
   backendUrl: string;
+  setTasks: (tasks: Task[] | []) => void;
   setIsLoading: (boolean: boolean) => void;
 }
 
-const useFetchTasks = ({ backendUrl, setIsLoading }: useFetchTasks) => {
-  const [tasks, setTasks] = useState<Task[] | []>([]);
+const useFetchTasks = ({
+  backendUrl,
+  setIsLoading,
+  setTasks,
+}: useFetchTasks) => {
+  const fetchTasks = async (finishedTasks) => {
+    const url = finishedTasks
+      ? `${backendUrl}/tasks/finished.json`
+      : `${backendUrl}/tasks.json`;
 
-  const fetchTasks = async () => {
     setIsLoading(true);
 
-    const response = await fetch(`${backendUrl}/tasks.json`);
-    const tasks: Task[] = await response.json();
+    const response = await fetch(url);
+    const tasks: Task[] | [] = await response.json();
 
     setTasks(tasks);
     setIsLoading(false);
   };
 
-  return { fetchTasks, tasks };
+  return { fetchTasks };
 };
 
 export { useFetchTasks };

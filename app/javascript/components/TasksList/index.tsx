@@ -6,10 +6,10 @@ import "./styles.css";
 interface TasksListProps {
   tasks: Task[];
   navigate: ({ to }) => void;
-  deleteTaskMutation: (taskId: string) => void;
+  handleOnDeleteTask: (taskId: string) => void;
 }
 
-const TasksList = ({ tasks, navigate, deleteTaskMutation }: TasksListProps) => {
+const TasksList = ({ tasks, navigate, handleOnDeleteTask }: TasksListProps) => {
   return (
     <div className="tasks-container">
       {tasks.map((task, index) => (
@@ -17,7 +17,7 @@ const TasksList = ({ tasks, navigate, deleteTaskMutation }: TasksListProps) => {
           key={index}
           task={task}
           navigate={navigate}
-          deleteTaskMutation={deleteTaskMutation}
+          handleOnDeleteTask={handleOnDeleteTask}
         />
       ))}
     </div>

@@ -17,7 +17,7 @@ const BottomBar = ({ backendUrl }: BottomBarProps) => {
           className="archived-tasks-btn bottom-bar-btn"
           onClick={() =>
             navigate({
-              to: "tasks/archived",
+              to: "tasks/finished",
             })
           }
         >

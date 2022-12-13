@@ -4,15 +4,27 @@ interface generalProps {
 }
 
 const useDeleteAllTasks = ({ backendUrl, setIsLoading }: generalProps) => {
-  const mutation = async () => {
+  const mutation = async (finishedTasks) => {
     const responseConfirm = confirm("Are you secure of delete all tasks?");
 
     if (!responseConfirm) return;
 
+    const url = finishedTasks
+      ? `${backendUrl}/tasks/finished`
+      : `${backendUrl}/tasks`;
+
     setIsLoading(true);
 
-    await fetch(`${backendUrl}/tasks`, {
+    await fetch(url, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body:
+        finishedTasks &&
+        JSON.stringify({
+          finished: true,
+        }),
     });
 
     setIsLoading(false);
