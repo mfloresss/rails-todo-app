@@ -1,0 +1,8 @@
+<%= stylesheet_link_tag 'tasks/new' %>
+<div class="layout">
+  <div class="header">
+    <h1>New task</h1>
+    <%= link_to "X", root_path, class: "close-btn" %>
+  </div>
+  <%= render "form", task: @task %>
+</div>

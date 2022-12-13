@@ -1,0 +1,33 @@
+.task-container {
+  position: relative;
+  color: #eefcce;
+}
+
+.task-card {
+  background-color: #9eb25d;
+  padding: 30px;
+  cursor: pointer;
+  line-height: 3rem;
+  border-radius: 20px;
+}
+
+.delete-task-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: 0;
+  width: 2rem;
+  height: 2rem;
+  margin: 30px 30px 0 0;
+  background-color: #eefcce;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  cursor: pointer;
+  color: #494947;
+}
+
+.header {
+  margin-right: 60px;
+}

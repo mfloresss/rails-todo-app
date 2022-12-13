@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag 'comments/form' %>
+<%= form_with model: [ @task, @comment ] do |f| %>
+  <div class="field-container">
+    <%= f.label :commenter %>
+    <%= f.text_field :commenter %>
+    <% @comment.errors.full_messages_for(:commenter).each do |message| %>
+      <p class="error_text"><%= message %></p>
+    <% end %>
+  </div>
+  <div class="field-container">
+    <%= f.text_area :body %>
+    <% @comment.errors.full_messages_for(:body).each do |message| %>
+      <p class="error_text"><%= message %></p>
+    <% end %>
+  </div>
+  <%= f.submit class: "create-comment-btn" %>
+<% end %>

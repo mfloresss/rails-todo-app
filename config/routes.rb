@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'tasks#index'
+
+  resources :tasks do
+    resources :comments
+    collection do
+      get 'finished'
+      delete 'finished'
+    end
+  end
+
+  resources :comments
+
+  delete '/tasks', to: 'tasks#destroy_all'
 end

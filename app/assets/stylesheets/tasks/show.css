@@ -1,0 +1,82 @@
+.task-container {
+  position: relative;
+  color: white;
+  margin: 50px 10%;
+}
+
+.task-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+
+.task-card {
+  background-color: #9eb25d;
+  padding: 30px;
+  cursor: pointer;
+  line-height: 3rem;
+  border-radius: 20px;
+}
+
+.delete-task-btn {
+  width: 2rem;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.delete-task-btn,
+.edit-task-btn {
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #494947;
+  background-color: #eefcce;
+}
+
+.edit-task-btn {
+  padding: 0 30px;
+  border-radius: 20px;
+}
+
+.comments-container {
+  padding: 30px;
+  color: #eefcce;
+  background-color: #9eb25d;
+}
+
+.comments {
+  margin-top: 3rem;
+  margin-bottom: 50%;
+}
+
+.done-task-btn {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 30px;
+  width: 4rem;
+  height: 4rem;
+  background-color: #eefcce;
+  color: #494947;
+  font-size: 2rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .comments-container {
+    margin: 50px 10% 0;
+    padding: 50px;
+    border-radius: 20px;
+  }
+
+  .comments {
+    margin-bottom: 0;
+  }
+}

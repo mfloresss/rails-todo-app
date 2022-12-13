@@ -1,0 +1,8 @@
+<%= stylesheet_link_tag 'comments/comment' %>
+<% if comment.commenter && comment.body %>
+  <div class="comment-card">
+    <h3><%= comment.commenter %></h3>
+    <p><%= comment.body %></p>
+    <p><%= comment.created_at&.strftime("%d/%m %I:%M%p") %></p>
+  </div>
+<% end %>
