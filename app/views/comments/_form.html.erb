@@ -1,36 +1,4 @@
-<style>
-  .field-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .error_text {
-    color: #F87060;
-  }
-
-  input.create-comment-btn  {
-    padding: 10px;
-    border-radius: 20px;
-    text-align: center;
-    color: #9eb25d;
-    background-color: #eefcce;
-  }
-
-  input, textarea {
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    outline: none;
-  }
-</style>
+<%= stylesheet_link_tag 'comments/form' %>
 <%= form_with model: [ @task, @comment ] do |f| %>
   <div class="field-container">
     <%= f.label :commenter %>

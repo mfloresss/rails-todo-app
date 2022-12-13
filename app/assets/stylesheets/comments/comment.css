@@ -1,7 +1,8 @@
-.tasks-container {
+.comment-card {
+  width: 100%;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
-  margin-bottom: calc(88px + 1rem);
+  gap: 20px;
 }

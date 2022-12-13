@@ -1,13 +1,4 @@
-<style>
-  .comment-card {
-      width: 100%;
-      padding: 20px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 20px;
-  }
-</style>
+<%= stylesheet_link_tag 'comments/comment' %>
 <% if comment.commenter && comment.body %>
   <div class="comment-card">
     <h3><%= comment.commenter %></h3>

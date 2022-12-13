@@ -1,70 +1,9 @@
-<style>
-  .task-container {
-    position: relative;
-    color: white;
-    margin: 50px 10%;
-  }
-
-  .task-card .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    line-height: normal;
-    margin-bottom: 20px;
-  }
-
-  .task-card {
-    background-color: #9eb25d;
-    padding: 30px;
-    cursor: pointer;
-    line-height: 3rem;
-    border-radius: 20px;
-  }
-
-  .delete-task-btn {
-    width: 2rem;
-    border-radius: 100%;
-    cursor: pointer;
-  }
-
-  .delete-task-btn, .edit-task-btn {
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #494947;
-    background-color: #eefcce;
-  }
-
-  .edit-task-btn {
-    padding: 0 30px;
-    border-radius: 20px;
-  }
-
-  .comments-container {
-    padding: 30px;
-    color: #eefcce;
-    background-color: #9eb25d;
-  }
-
-  .comments {
-    margin-top: 3rem;
-  }
-
-  @media (min-width: 1024px) {
-    .comments-container {
-      margin: 50px 10% 0;
-      padding: 50px;
-      border-radius: 20px;
-    }
-  }
-</style>
+<%= stylesheet_link_tag 'tasks/show' %>
 <div class="task-container">
   <div class="task-card">
     <div class="header">
       <%= link_to "Edit", edit_task_path(@task), class: "edit-task-btn" %>
-      <%= link_to "X", task_path(@task), method: :delete, class: "delete-task-btn" %>
+      <%= link_to "X", task_path(@task), method: :delete, class: "delete-task-btn", data: { confirm: 'Are you sure of delete this task?' } %>
     </div>
     <h2><%= @task.title %></h2>
     <p><%= @task.body %></p>
@@ -76,39 +15,12 @@
     <h2 style="margin-bottom: 20px;">Comments</h2>
     <%= render @task.comments %>
   </div>
-  <button class="done-task-btn">
-    Done
-  </button>
+  <% if @task.status == "ongoing" %>
+    <button class="done-task-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+      </svg>
+    </button>
+  <% end %>
 </div>
-<script>
-  const $ = (selector) => document.querySelector(selector);
-  const doneTaskBtn = $(".done-task-btn");
-
-  // fix this using ENV
-  const { origin: backendUrl, pathname }= window.location;
-  const taskId = pathname.slice(-1);
-
-  const doneTask = () => {
-    const confirmation = confirm("Are you secure that done this task? This task is archived");
-
-    if (!confirmation) return;
-    try {
-      (async () => {
-        await fetch (`${backendUrl}/tasks/${taskId}`, {
-          method: "PATCH",
-          headers: {
-          "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            status: "done"
-          })
-        });
-        window.location = "/";
-      })();
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  doneTaskBtn.addEventListener("click", doneTask);
-</script>
+<%= javascript_include_tag "tasks/show.js" %>
