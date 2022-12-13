@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :tasks do
     resources :comments
+    collection do
+      get 'finished'
+      delete 'finished'
+    end
   end
 
   resources :comments

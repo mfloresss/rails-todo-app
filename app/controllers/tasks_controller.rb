@@ -1,9 +1,21 @@
 class TasksController < ApplicationController
   before_action :set_task
-  skip_before_action :set_task, only: %i[index new create destroy_all]
+  skip_before_action :set_task, only: %i[index new create destroy_all finished]
 
   def index
     @tasks = Task.where status: :ongoing
+    respond_to do |format|
+      format.html
+      format.json { render json: @tasks, status: :ok }
+    end
+  end
+
+  def finished
+    destroy_finished = params[:finished]
+
+    Task.where(status: :finished).delete_all if destroy_finished
+
+    @tasks = Task.where status: :finished
     respond_to do |format|
       format.html
       format.json { render json: @tasks, status: :ok }
@@ -30,6 +42,7 @@ class TasksController < ApplicationController
   def edit; end
 
   def update
+    status = params[:task][:status]
     if status.present?
       @task.status = status
       @task.save!
@@ -46,8 +59,7 @@ class TasksController < ApplicationController
   end
 
   def destroy_all
-    @tasks = Task.all
-    @tasks.destroy_all
+    Task.where(status: :ongoing).delete_all
     redirect_to root_path, status: :see_other
   end
 
