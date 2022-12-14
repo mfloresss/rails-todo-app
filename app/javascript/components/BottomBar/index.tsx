@@ -12,7 +12,7 @@ const BottomBar = ({ backendUrl }: BottomBarProps) => {
 
   return (
     <div className="bottom-bar-container">
-      {currentPath === "/" ? (
+      {currentPath === "/" || currentPath === "/tasks" ? (
         <button
           className="archived-tasks-btn bottom-bar-btn"
           onClick={() =>
