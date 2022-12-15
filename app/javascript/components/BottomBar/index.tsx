@@ -59,4 +59,4 @@ const BottomBar = ({ backendUrl }: BottomBarProps) => {
   );
 };
 
-export { BottomBar };
+export default BottomBar;

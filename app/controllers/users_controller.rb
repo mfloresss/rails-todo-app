@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate!, only: %i[new create]
+  before_action :logged_in, :set_current_user
+  before_action :logged_in, only: %i[new create]
+  skip_before_action :authenticate, :set_current_user, only: %i[new create]
 
   def new
     @user = User.new
@@ -22,9 +24,30 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    user_exist = User.find_by_email params[:user][:email] if params[:user][:email]
+
+    if user_exist
+      flash[:notice] = 'Email already usage'
+      return redirect_to settings_path
+    end
+
+    @user.update(user_params)
+
+    redirect_to settings_path
+  end
+
   private
+
+  def set_current_user
+    @user = User.find session[:user_id]
+  end
 
   def user_params
     params.require(:user).permit(:name, :last_name, :email, :password)
+  end
+
+  def logged_in
+    redirect_to root_path if session[:user_id]
   end
 end

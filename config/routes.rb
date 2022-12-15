@@ -6,11 +6,10 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
-
-  get '/logout', to: 'sessions#destroy'
+  
   post '/logout', to: 'sessions#destroy'
 
-  resources :users, only: %i[new create]
+  resources :users, only: %i[show new create update]
 
   resources :comments
 
@@ -23,4 +22,6 @@ Rails.application.routes.draw do
   end
 
   delete '/tasks', to: 'tasks#destroy_all'
+
+  get '/settings', to: 'users#show'
 end

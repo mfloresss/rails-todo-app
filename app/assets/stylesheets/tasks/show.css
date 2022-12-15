@@ -1,7 +1,12 @@
+body {
+  background-color: #9eb25d;
+}
+
 .task-container {
+  background-color: white;
   position: relative;
   color: white;
-  margin: 50px 10%;
+  padding: 50px 10%;
 }
 
 .task-card .header {
@@ -50,7 +55,6 @@
 
 .comments {
   margin-top: 3rem;
-  margin-bottom: 50%;
 }
 
 .done-task-btn {
