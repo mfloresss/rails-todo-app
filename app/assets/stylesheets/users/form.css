@@ -1,0 +1,45 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: calc(88px + 1rem);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.error_text {
+  color: #f87060;
+}
+
+input,
+input.update-btn,
+input.logout-btn {
+  width: 100%;
+  border: none;
+  background-color: #9eb25d;
+  border-radius: 10px;
+  padding: 10px 20px;
+  outline: none;
+  color: #eefcce;
+}
+
+input.update-btn {
+  margin-top: 2rem;
+}

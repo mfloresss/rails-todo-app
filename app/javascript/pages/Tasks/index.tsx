@@ -7,7 +7,7 @@ import { useDeleteAllTasks } from "../../hooks/mutations/tasks";
 import { useDeleteTask } from "../../hooks/mutations/tasks";
 import { useNavigate } from "../../hooks/useNavigate";
 import "./styles.css";
-import { BottomBar } from "../../components/BottomBar";
+import BottomBar from "../../components/BottomBar";
 import { Task } from "../../interfaces/task";
 
 export interface TasksPageProps {

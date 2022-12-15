@@ -62,7 +62,7 @@ class TasksController < ApplicationController
   end
 
   def destroy_all
-    Task.where(status: :ongoing).delete_all
+    Task.where(user: current_user, status: :ongoing).delete_all
     redirect_to root_path, status: :see_other
   end
 

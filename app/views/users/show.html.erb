@@ -1,0 +1,11 @@
+<%= stylesheet_link_tag 'users/form' %>
+<div class="layout">
+  <div class="header">
+    <h1>Settings</h1>
+    <%= button_to "Logout", logout_path, class: "logout-btn", method: :post %>
+  </div>
+  <div class="form-container">
+    <%= render "form" %>
+  </div>
+</div>
+<%= react_component("BottomBar", { backendUrl: ENV["BACKEND_URL"] } ) %>

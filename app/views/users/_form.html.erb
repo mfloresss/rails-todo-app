@@ -1,0 +1,19 @@
+<%= form_with model: @user do |f| %>
+  <div class="field-container">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field-container">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field-container">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div class="field-container">
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+  </div>
+  <%= f.submit "Update", class: 'update-btn' %>
+<% end %>
