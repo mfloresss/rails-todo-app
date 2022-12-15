@@ -1,0 +1,53 @@
+<style>
+  .field-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  form {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .error_text {
+    color: #f87060;
+  }
+
+  input, input.login-btn {
+    width: 100%;
+    border: none;
+    background-color: #9eb25d;
+    border-radius: 10px;
+    padding: 10px 20px;
+    outline: none;
+    color: #eefcce;
+  }
+</style>
+<div class="layout">
+  <h1>Login</h1>
+  <%= form_with url: login_path do |f| %>
+    <div class="field-container">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+      <%= content_tag :p, class: "error_text" do %>
+        <% flash[:email_error_field] %>
+      <% end %>
+    </div>
+    <div class="field-container">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <%= content_tag :p, class: "error_text" do %>
+        <%flash[:password_error_field] %>
+      <% end %>
+    </div>
+    <%= content_tag :p, class: "error_text" do %>
+      <%= flash[:notice] %>
+    <% end %>
+    <%= f.submit "Login", class: 'login-btn' %>
+  <%end%>
+</div>
