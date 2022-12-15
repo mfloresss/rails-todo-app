@@ -6,7 +6,7 @@ import "./styles.css";
 interface TasksListProps {
   tasks: Task[];
   navigate: ({ to }) => void;
-  handleOnDeleteTask: (taskId: string) => void;
+  handleOnDeleteTask: (taskId: number) => void;
 }
 
 const TasksList = ({ tasks, navigate, handleOnDeleteTask }: TasksListProps) => {

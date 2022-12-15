@@ -6,7 +6,7 @@ import "./styles.css";
 interface TaskCardProps {
   task: Task;
   navigate: ({ to }) => void;
-  handleOnDeleteTask: (taskId: string) => void;
+  handleOnDeleteTask: (taskId: number) => void;
 }
 
 const TaskCard = ({ task, navigate, handleOnDeleteTask }: TaskCardProps) => {
@@ -20,6 +20,10 @@ const TaskCard = ({ task, navigate, handleOnDeleteTask }: TaskCardProps) => {
           <h2>{task.title}</h2>
         </div>
         <p>{task.body}</p>
+        <p style={{ textAlign: "end" }}>Created by: {task.author_name} </p>
+        {task.comments.length > 0 && (
+          <p style={{ textAlign: "end" }}>+{task.comments.length} comments</p>
+        )}
       </div>
       <div
         className="delete-task-btn"
