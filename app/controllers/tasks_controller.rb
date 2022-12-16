@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task
+  before_action :set_task, :set_team
   skip_before_action :set_task, only: %i[index new create destroy_all finished]
 
   def index
@@ -74,6 +74,10 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.find_by id: params[:id], user: current_user
+  end
+
+  def set_team
+    @team = Team.find params[:team_id]
   end
 
   def task_params

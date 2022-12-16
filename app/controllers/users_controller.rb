@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   before_action :logged_in, only: %i[new create]
   skip_before_action :authenticate, :set_current_user, only: %i[new create]
 
+  def index
+    @user = @user.attributes.merge({
+                                     teams: @user.teams
+                                   }).except 'password_digest'
+  end
+
   def new
     @user = User.new
   end
@@ -16,6 +22,11 @@ class UsersController < ApplicationController
       flash[:notice] = 'Email already usage'
       return render :new
     end
+
+    @team = Team.new name: "#{params[:user][:name]}'s Team"
+    @user.teams << @team
+
+    pp @user.teams
 
     if @user.save
       redirect_to login_path

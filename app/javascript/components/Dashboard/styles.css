@@ -1,0 +1,26 @@
+.team-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.team-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #9eb25d;
+  color: #eefcce;
+  cursor: pointer;
+}
+
+.team-card:hover {
+  background-color: #eefcce;
+  color: #9eb25d;
+  transition: 0.3s;
+}
