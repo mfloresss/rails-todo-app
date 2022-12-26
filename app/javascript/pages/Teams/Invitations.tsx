@@ -2,6 +2,7 @@ import * as React from "react";
 import { Layout } from "../../core/Layout";
 import { InvitationTeam } from "../../interfaces/team";
 import { InvitationCard } from "../../components/InvitationCard.tsx";
+import { useNavigate } from "../../hooks/useNavigate";
 
 export interface InvitationsPageProps {
   invitations: InvitationTeam[];
@@ -12,6 +13,8 @@ export const Invitations = ({
   invitations,
   backendUrl,
 }: InvitationsPageProps) => {
+  const { navigate } = useNavigate({ basePath: backendUrl });
+
   const handdleInvitation = async ({ invitationId, accept }) => {
     const url = accept
       ? `${backendUrl}/teams/invitations/${invitationId}/accept`
@@ -49,6 +52,7 @@ export const Invitations = ({
             display: "grid",
             placeContent: "center",
           }}
+          onClick={() => navigate({ to: "/teams" })}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
