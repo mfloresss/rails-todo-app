@@ -5,3 +5,12 @@ export interface Team {
   created_at: Date;
   updated_at: Date;
 }
+export interface InvitationTeam {
+  id: number;
+  user_id: number;
+  team_id: number;
+  confirm: boolean;
+  created_at: Date;
+  updated_at: Date;
+  team: Team;
+}

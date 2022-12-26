@@ -7,14 +7,9 @@ class CreateTeam < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    create_table :users_team do |t|
-      t.references :user, null: false, foreign_key: true
-      t.references :team, null: false, foreign_key: true
-    end
-
-    create_table :users_team do |t|
-      t.references :user, null: false, foreign_key: true
-      t.references :team, null: false, foreign_key: true
+    create_join_table :teams, :users do |t|
+      t.index :team_id
+      t.index :user_id
     end
   end
 end

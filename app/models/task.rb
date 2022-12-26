@@ -1,7 +1,8 @@
 class Task < ApplicationRecord
   has_many :comments, dependent: :destroy
+  
   belongs_to :user
-  has_and_belongs_to_many :team
+  belongs_to :team
 
   enum status: %i[ongoing finished]
 

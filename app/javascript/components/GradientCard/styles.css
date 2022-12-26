@@ -1,0 +1,17 @@
+.gradient-card {
+  position: relative;
+  width: 100%;
+  padding: 30px;
+  cursor: pointer;
+  line-height: 3rem;
+  border-radius: 20px;
+  color: #ffff;
+}
+
+.gradient-card h2,
+.gradient-card p {
+  max-height: 4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
