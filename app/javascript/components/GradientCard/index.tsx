@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { randomGradientColor } from "../../hooks/helpers/randomGradientColor";
+import { randomGradientColor } from "../../helpers/randomGradientColor";
 import "./styles.css";
 
 interface GradientCardProps {
