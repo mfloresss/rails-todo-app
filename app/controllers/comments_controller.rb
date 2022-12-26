@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment = @task.comments.new(comment_params)
 
     if @comment.save
-      redirect_to task_path(@task)
+      redirect_to team_task_path id: @task.id
     else
       render template: 'tasks/show'
     end

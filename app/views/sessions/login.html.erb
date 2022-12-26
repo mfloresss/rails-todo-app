@@ -1,27 +1,29 @@
 <%= stylesheet_link_tag 'sessions/login' %>
 <div class="layout">
   <h1>Login</h1>
-  <%= form_with url: login_path do |f| %>
-    <div class="field-container">
-      <%= f.label :email %>
-      <%= f.email_field :email %>
+  <div class="form-container">
+    <%= form_with url: login_path do |f| %>
+      <div class="field-container">
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+        <%= content_tag :p, class: "error_text" do %>
+          <% flash[:email_error_field] %>
+        <% end %>
+      </div>
+      <div class="field-container">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        <%= content_tag :p, class: "error_text" do %>
+          <%flash[:password_error_field] %>
+        <% end %>
+      </div>
       <%= content_tag :p, class: "error_text" do %>
-        <% flash[:email_error_field] %>
+        <%= flash[:notice] %>
       <% end %>
-    </div>
-    <div class="field-container">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-      <%= content_tag :p, class: "error_text" do %>
-        <%flash[:password_error_field] %>
-      <% end %>
-    </div>
-    <%= content_tag :p, class: "error_text" do %>
-      <%= flash[:notice] %>
-    <% end %>
-    <%= f.submit "Login", class: 'login-btn' %>
-    <div class="signup-btn">
-      <%= link_to "Create an account", signup_path %>
-    </div>
-  <%end%>
+      <%= f.submit "Login", class: 'login-btn' %>
+      <div class="signup-btn">
+        <%= link_to "Create an account", signup_path %>
+      </div>
+    <%end%>
+  </div>
 </div>

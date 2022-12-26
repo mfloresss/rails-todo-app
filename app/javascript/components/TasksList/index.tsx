@@ -1,6 +1,7 @@
 import * as React from "react";
 import TaskCard from "../TaskCard/index";
 import { Task } from "../../interfaces/task";
+import { useState } from "react";
 import "./styles.css";
 
 interface TasksListProps {
@@ -10,6 +11,8 @@ interface TasksListProps {
 }
 
 const TasksList = ({ tasks, navigate, handleOnDeleteTask }: TasksListProps) => {
+  const [gradientColors, setGradientColors] = useState([]);
+
   return (
     <div className="tasks-container">
       {tasks.map((task, index) => (
@@ -17,6 +20,8 @@ const TasksList = ({ tasks, navigate, handleOnDeleteTask }: TasksListProps) => {
           key={index}
           task={task}
           navigate={navigate}
+          gradientColors={gradientColors}
+          setGradientColors={setGradientColors}
           handleOnDeleteTask={handleOnDeleteTask}
         />
       ))}

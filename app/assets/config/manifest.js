@@ -4,4 +4,5 @@
 //= link_directory ../stylesheets/comments .css
 //= link_directory ../stylesheets/users .css
 //= link_directory ../stylesheets/sessions .css
+//= link_directory ../stylesheets/invitation_teams .css
 //= link_directory ../javascript/tasks .js

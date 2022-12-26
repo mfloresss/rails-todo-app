@@ -3,7 +3,11 @@ class TasksController < ApplicationController
   skip_before_action :set_task, only: %i[index new create destroy_all finished]
 
   def index
-    @tasks = Task.where user: current_user, status: :ongoing
+    @tasks = @team.tasks.where status: :ongoing
+
+    @tasks = @tasks.map do |task|
+      task.attributes.merge author_name: task.author_name, comments: task.comments
+    end
 
     respond_to do |format|
       format.html
@@ -14,9 +18,14 @@ class TasksController < ApplicationController
   def finished
     destroy_finished = params[:finished]
 
-    Task.where(user: current_user, status: :finished).delete_all if destroy_finished
+    @team.tasks.where(status: :finished).delete_all if destroy_finished
 
-    @tasks = Task.where user: current_user, status: :finished
+    @tasks = @team.tasks.where status: :finished
+
+    @tasks = @tasks.map do |task|
+      task.attributes.merge author_name: task.author_name, comments: task.comments
+    end
+
     respond_to do |format|
       format.html
       format.json { render json: @tasks, status: :ok }
@@ -28,21 +37,19 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
+    @task = @team.tasks.build
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = @team.tasks.new task_params
 
-    if @task.save
-      redirect_to @task
+    if @team.save
+      redirect_to team_tasks_path
     else
       pp @task.errors
       render :new, status: :unprocessable_entity
     end
   end
-
-  def edit; end
 
   def update
     status = params[:task][:status]
@@ -62,7 +69,11 @@ class TasksController < ApplicationController
   end
 
   def destroy_all
-    Task.where(user: current_user, status: :ongoing).delete_all
+    @team.tasks.each do |task|
+      task.comments.delete_all
+    end
+
+    @team.tasks.where(status: :ongoing).delete_all
     redirect_to root_path, status: :see_other
   end
 
@@ -73,11 +84,12 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = Task.find_by id: params[:id], user: current_user
+    @task = Task.find_by id: params[:id]
   end
 
   def set_team
     @team = Team.find params[:team_id]
+    session[:current_team_id] = @team.id
   end
 
   def task_params

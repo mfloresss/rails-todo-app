@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  root to: redirect('/teams')
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
@@ -14,9 +14,7 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
-  resources :comments
-
-  resources :team do
+  resources :teams do
     resources :tasks do
       resources :comments
       collection do
@@ -25,6 +23,15 @@ Rails.application.routes.draw do
       end
     end
     delete '/tasks', to: 'tasks#destroy_all'
+
+    get 'invite'
+    post 'invite', to: 'teams#send_invite'
+
+    collection do
+      get 'invitations', to: 'invitation_teams#index'
+      patch 'invitations/:invitation_id/accept', to: 'invitation_teams#accept'
+      delete 'invitations/:invitation_id/decline', to: 'invitation_teams#decline'
+    end
   end
 
   get '/settings', to: 'users#show'

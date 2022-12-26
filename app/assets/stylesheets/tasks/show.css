@@ -1,11 +1,7 @@
-body {
-  background-color: #9eb25d;
-}
-
 .task-container {
-  background-color: white;
+  background-color: #fff;
   position: relative;
-  color: white;
+  color: #fff;
   padding: 50px 10%;
 }
 
@@ -19,7 +15,6 @@ body {
 }
 
 .task-card {
-  background-color: #9eb25d;
   padding: 30px;
   cursor: pointer;
   line-height: 3rem;
@@ -39,7 +34,7 @@ body {
   justify-content: center;
   align-items: center;
   color: #494947;
-  background-color: #eefcce;
+  background-color: #fff;
 }
 
 .edit-task-btn {
@@ -49,23 +44,28 @@ body {
 
 .comments-container {
   padding: 30px;
-  color: #eefcce;
-  background-color: #9eb25d;
+  color: #fff;
 }
 
 .comments {
   margin-top: 3rem;
 }
 
-.done-task-btn {
+.continer-fixed-btn {
   position: fixed;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   right: 0;
   bottom: 0;
   margin: 30px;
+}
+
+.fixed-btn {
   width: 4rem;
   height: 4rem;
-  background-color: #eefcce;
-  color: #494947;
+  background-color: #fff;
+  color: #000;
   font-size: 2rem;
   border-radius: 100%;
   display: flex;

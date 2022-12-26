@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag 'comments/form' %>
-<%= form_with model: [ @task, @comment ] do |f| %>
+<%= form_with model: [ @team, @task, @comment ] do |f| %>
   <div class="field-container">
     <%= f.text_area :body %>
     <% @comment.errors.full_messages_for(:body).each do |message| %>
