@@ -1,15 +1,24 @@
 .header {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+}
+
+.back-btn {
+  width: 2rem;
+  height: 2rem;
+  background-color: #000;
+  border-radius: 100%;
+  display: grid;
+  place-content: center;
 }
 
 .field-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .form-container {
@@ -21,7 +30,7 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 }
 
 .error_text {
@@ -29,17 +38,17 @@ form {
 }
 
 input,
-input.update-btn,
-input.logout-btn {
+input.update-btn {
   width: 100%;
   border: none;
-  background-color: #9eb25d;
-  border-radius: 10px;
+  background-color: #e8f0fe !important;
+  border-radius: 1rem;
   padding: 10px 20px;
   outline: none;
-  color: #eefcce;
+  color: #000;
 }
 
 input.update-btn {
-  margin-top: 2rem;
+  background-color: #000 !important;
+  color: #fff;
 }

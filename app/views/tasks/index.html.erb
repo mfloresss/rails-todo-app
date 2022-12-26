@@ -1,4 +1,1 @@
-<% tasks = @tasks.map do |task| %>
-  <% task.attributes.merge author_name: task.author_name, comments: task.comments %>
-<% end %>
-<%= react_component("TasksPage", { tasksFromView: tasks, backendUrl: ENV["BACKEND_URL"] } ) %>
+<%= react_component("TasksPage", { team: @team, tasksFromView: @tasks, backendUrl: ENV["BACKEND_URL"] } ) %>

@@ -1,4 +1,30 @@
+<style>
+  .header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 40px;
+  }
+  .back-btn {
+    width: 2rem;
+    height: 2rem;
+    background-color: #525252;
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+  }
+</style>
 <div class="layout">
-  <h1 style="margin-bottom: 40px;">Edit Task</h1>
+  <div class="header">
+    <%= link_to team_task_path(@task) do %>
+      <div class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+        </svg>
+      </div>
+    <% end %>
+    <h1>Edit Task</h1>
+  </div>
   <%= render "form", task: @task %>
 </div>

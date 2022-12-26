@@ -19,13 +19,13 @@ input.create-task-btn {
   padding: 10px;
   border-radius: 20px;
   text-align: center;
-  color: #eefcce;
-  background-color: #9eb25d;
+  color: #fff;
+  background-color: #000;
 }
 
 input,
 textarea {
-  border: 2px solid #494947;
+  border: 2px solid #000;
   border-radius: 10px;
   padding: 10px 20px;
   outline: none;

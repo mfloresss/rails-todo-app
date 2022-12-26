@@ -3,15 +3,18 @@ interface UseNavigateProps {
 }
 
 interface NavigateProps {
-  to: string;
+  to?: string;
+  push?: string;
 }
 
 const useNavigate = ({ basePath }: UseNavigateProps) => {
-  const navigate = ({ to }: NavigateProps) => {
-    (window as Window).location = `${basePath}/${to}`;
-  };
-
   const currentPath = window.location.pathname;
+
+  const navigate = ({ to, push }: NavigateProps) => {
+    (window as Window).location = push
+      ? `${currentPath}/${push}`
+      : `${basePath}/${to}`;
+  };
 
   return { navigate, currentPath };
 };

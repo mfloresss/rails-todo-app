@@ -1,66 +1,43 @@
-<style>
-  .field-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  form {
-    margin-top: 2rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .error_text {
-    color: #f87060;
-  }
-
-  input, input.signup-btn {
-    width: 100%;
-    border: none;
-    background-color: #9eb25d;
-    border-radius: 10px;
-    padding: 10px 20px;
-    outline: none;
-    color: #eefcce;
-  }
-</style>
+<%= stylesheet_link_tag 'users/new' %>
 <div class="layout">
   <h1>Sign Up</h1>
-  <%= form_with model: @user do |f| %>
-    <div class="field-container">
-      <%= f.label :name %><br>
-      <%= f.text_field :name %><br>
-      <% @user.errors.full_messages_for(:name).each do |message| %>
-        <p class="error_text"><%= message %></p>
+  <div class="form-container">
+    <%= form_with model: @user do |f| %>
+      <div class="field-container">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <% @user.errors.full_messages_for(:name).each do |message| %>
+          <p class="error_text"><%= message %></p>
+        <% end %>
+      </div>
+      <div class="field-container">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+        <% @user.errors.full_messages_for(:last_name).each do |message| %>
+          <p class="error_text"><%= message %></p>
+        <% end %>
+      </div>
+      <div class="field-container">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        <% @user.errors.full_messages_for(:password).each do |message| %>
+          <p class="error_text"><%= message %></p>
+        <% end %>
+      </div>
+      <div class="field-container">
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+        <% @user.errors.full_messages_for(:email).each do |message| %>
+          <p class="error_text"><%= message %></p>
+        <% end %>
+      </div>
+      <%= content_tag :p, class: "error_text" do %>
+        <%= flash[:notice] %>
       <% end %>
-    </div>
-    <div class="field-container">
-      <%= f.label :last_name %><br>
-      <%= f.text_field :last_name %><br>
-      <% @user.errors.full_messages_for(:last_name).each do |message| %>
-        <p class="error_text"><%= message %></p>
-      <% end %>
-    </div>
-    <div class="field-container">
-      <%= f.label :password %><br>
-      <%= f.password_field :password %><br>
-      <% @user.errors.full_messages_for(:password).each do |message| %>
-        <p class="error_text"><%= message %></p>
-      <% end %>
-    </div>
-    <div class="field-container">
-      <%= f.label :email %><br>
-      <%= f.email_field :email %><br>
-      <% @user.errors.full_messages_for(:email).each do |message| %>
-        <p class="error_text"><%= message %></p>
-      <% end %>
-    </div>
-    <%= content_tag :p, class: "error_text" do %>
-      <%= flash[:notice] %>
-    <% end %>
-    <%= f.submit "Signup", class: 'signup-btn' %>
-  <%end%>
+      <%= f.submit "Signup", class: 'signup-btn' %>
+      <div class="login-btn">
+        <%= link_to "Login", login_path %>
+      </div>
+    <%end%>
+  </div>
 </div>

@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
+  word-break: break-word;
 }
 
 .layout {
@@ -24,6 +25,7 @@ input {
   outline: none;
 }
 
+select,
 button,
 input[type="submit"],
 input[type="reset"] {
@@ -41,11 +43,23 @@ h2,
 h3,
 p,
 a {
-  word-wrap: break-word;
   text-align: justify;
 }
 
 a {
   color: unset;
   text-decoration: none;
+}
+
+select {
+  appearance: none;
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+/* For IE10 */
+select::-ms-expand {
+  display: none;
 }

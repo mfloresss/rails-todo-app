@@ -1,17 +1,24 @@
+import { Team } from "../../interfaces/team";
+
 interface generalProps {
+  team: Team;
   backendUrl: string;
   setIsLoading?: (boolean: boolean) => void;
 }
 
-const useDeleteAllTasks = ({ backendUrl, setIsLoading }: generalProps) => {
-  const mutation = async (finishedTasks) => {
+const useDeleteAllTasks = ({
+  team,
+  backendUrl,
+  setIsLoading,
+}: generalProps) => {
+  const mutation = async (finishedTasks, fetchTasksCallback) => {
     const responseConfirm = confirm("Are you secure of delete all tasks?");
 
     if (!responseConfirm) return;
 
     const url = finishedTasks
-      ? `${backendUrl}/tasks/finished`
-      : `${backendUrl}/tasks`;
+      ? `${backendUrl}/teams/${team.id}/tasks/finished`
+      : `${backendUrl}/teams/${team.id}/tasks`;
 
     setIsLoading(true);
 
@@ -28,6 +35,8 @@ const useDeleteAllTasks = ({ backendUrl, setIsLoading }: generalProps) => {
     });
 
     setIsLoading(false);
+
+    await fetchTasksCallback();
   };
 
   return { mutation };
@@ -35,13 +44,13 @@ const useDeleteAllTasks = ({ backendUrl, setIsLoading }: generalProps) => {
 
 export { useDeleteAllTasks };
 
-const useDeleteTask = ({ backendUrl }: generalProps) => {
+const useDeleteTask = ({ team, backendUrl }: generalProps) => {
   const mutation = async (taskId: string) => {
     const responseConfirm = confirm("Are you secure of delete this task?");
 
     if (!responseConfirm) return;
 
-    await fetch(`${backendUrl}/tasks/${taskId}`, {
+    await fetch(`${backendUrl}/teams/${team.id}/tasks/${taskId}`, {
       method: "DELETE",
     });
   };

@@ -1,0 +1,96 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.back-btn {
+  width: 2rem;
+  height: 2rem;
+  background-color: #000;
+  border-radius: 100%;
+  display: grid;
+  place-content: center;
+}
+
+.field-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: calc(88px + 1rem);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.error_text {
+  color: #f87060;
+}
+
+input,
+button {
+  width: 100%;
+  border: none;
+  background-color: #e8f0fe !important;
+  border-radius: 1rem;
+  padding: 10px 20px;
+  outline: none;
+  color: #000;
+}
+
+button {
+  text-align: center;
+  background-color: #000 !important;
+  color: #fff;
+}
+
+.invite-btn-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.user-card {
+  position: relative;
+  width: 100%;
+  padding: 30px;
+  cursor: pointer;
+  line-height: 3rem;
+  border-radius: 20px;
+  color: #ffff;
+}
+
+.user-card h2,
+.user-card p {
+  max-height: 4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-card {
+  background: #00c6ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #0072ff,
+    #00c6ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #0072ff,
+    #00c6ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.user-data-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

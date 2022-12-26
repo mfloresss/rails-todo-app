@@ -1,0 +1,22 @@
+.options-menu-modal-container {
+  position: relative;
+  background-color: #ffff;
+  height: 100vh;
+  padding: 2rem;
+  width: 60%;
+  border-radius: 20px 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.options-menu-modal-container .bottom-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

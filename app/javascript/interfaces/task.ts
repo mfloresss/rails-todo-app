@@ -2,6 +2,8 @@ export type StatusType = "ongoing" | "finished";
 
 export type Task = {
   id: number;
+  user_id: number;
+  team_id: number;
   title: string;
   body: string;
   created_at: Date;

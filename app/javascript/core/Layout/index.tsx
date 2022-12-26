@@ -4,7 +4,7 @@ import "./styles.css";
 
 interface LayoutProps {
   children: React.ReactNode;
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
 const Layout = ({ children, isLoading }: LayoutProps) => {

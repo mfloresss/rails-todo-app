@@ -1,0 +1,50 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.field-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-container {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: calc(88px + 1rem);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.error_text {
+  color: #f87060;
+}
+
+input,
+input.login-btn {
+  width: 100%;
+  border: none;
+  background-color: #e8f0fe !important;
+  border-radius: 1rem;
+  padding: 10px 20px;
+  outline: none;
+  color: #000;
+}
+
+input.login-btn {
+  background-color: #000 !important;
+  color: #fff;
+}
+
+.signup-btn {
+  width: 100%;
+  text-align: center;
+}

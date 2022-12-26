@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag 'tasks/form' %>
-<%= form_with model: task do |f| %>
+<%= form_with model: [ @team, @task ] do |f| %>
   <div class="field-container">
     <%= f.label :title %>
     <%= f.text_field :title %>

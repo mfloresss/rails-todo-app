@@ -1,0 +1,18 @@
+.gradient-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  cursor: default;
+}
+
+.gradient-card > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.invitation-btn-container {
+  gap: 2rem !important;
+}
