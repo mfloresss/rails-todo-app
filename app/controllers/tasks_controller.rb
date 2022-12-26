@@ -57,7 +57,7 @@ class TasksController < ApplicationController
       @task.status = status
       @task.save!
     elsif @task.update(task_params)
-      redirect_to @task
+      redirect_to team_task_path @task
     else
       render :new, status: :unprocessable_entity
     end
