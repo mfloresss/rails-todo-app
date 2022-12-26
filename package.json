@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "lint": "eslint app/javascript/**/*.ts[x]"
+    "lint": "eslint app/javascript/**/*.{js,tsx,ts}"
   },
   "name": "todo-app",
   "private": true,
